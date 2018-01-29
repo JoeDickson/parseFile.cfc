@@ -1,10 +1,7 @@
-
-
 <h1>Hello World</h1>
 
-<cfif IsDefined(url.fa) && url.fa IS "test">
-<cfinclude  template="test.cfm">
-
+<cfif IsDefined("url.fa") && url.fa IS "test">
+  <cfinclude  template="test.cfm">
 <cfelse>
   <cfif Not IsDefined("variables.parseFileObj")>
     <cfset variables.parseFileObj = createObject("component", "parseFile") />
