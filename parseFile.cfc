@@ -1,6 +1,12 @@
 component displayname="parseFile" hint="Singleton instance class that is able to read the next line from a text file and return a List of Strings that represent each delimited token that it reads from the file" output="true"
 {
-	
+
+/**
+
+* @fileData String containing file data. Required
+* @fileExt String specifying the file extension. Optional if customDelimiter is passed in
+* @customDelimiter String containg characters to use as the delimiter. Optional if fileExt passed in.
+*/
 	this.lineCount = 1;
   
   public any function getNextLineTokens(required string fileData, string fileExt = '', string customDelimiter='') 
