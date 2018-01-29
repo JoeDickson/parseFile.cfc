@@ -13,12 +13,9 @@ component displayname="parseFile" hint="Singleton instance class that is able to
 	 displayname="getNextLineTokens" description="The first call to a getNextLineTokens method of this new class would return a List of Strings that delimited token values. The second call would return the next row in the same file data. No lines left should return null." returnFormat="plain"
 	{
   var EOL = #chr(10)#; 
-  // var TAB = #chr(9)#; 
-  // var CR = #chr(13)#; 
-  // var QUOTE = #chr(34)#; 
-  // var SQUOTE = #chr(39)#; 
-  // var POUND = #chr(35)#; 
-  // var COMMA = #chr(44)#; 
+  var TAB = #chr(9)#; 
+  var COMMA = #chr(44)#; 
+  
   if( fileExt EQ "" && customDelimiter EQ "" ){
     throw("Method requires file extension or Custom Delimter be passed in.");
     abort;
@@ -27,7 +24,7 @@ component displayname="parseFile" hint="Singleton instance class that is able to
   if(NOT len(customDelimiter)){ 
     switch(Lcase(fileExt)) {
       case "tab":
-          var delimiter = #chr(9)#;
+          var delimiter = TAB;
           break;
       case "csv":
           var delimiter = #chr(44)#;
@@ -50,7 +47,7 @@ component displayname="parseFile" hint="Singleton instance class that is able to
       var line = ListGetAt(fileData, this.lineCount, chr(10));
       var listArray = ListToArray(line, delimiter ); 
       this.lineCount = this.lineCount + 1;
-      return ArrayToList(listArray, ",");
+      return trim(ArrayToList(listArray, ","));
     } 
   }
   catch(Expression exceptionVariable) {
