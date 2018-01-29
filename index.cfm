@@ -1,44 +1,54 @@
 <cfif Not IsDefined("variables.parseFileObj")>
 	<cfset variables.parseFileObj = createObject("component", "parseFile") />
-	testqqq
 </cfif>
+
+<cfset myPath = GetDirectoryFromPath(GetCurrentTemplatePath())>
+<cfset variables.fileData = fileRead("#GetDirectoryFromPath(GetCurrentTemplatePath())#test1.csv")>
+<cfset variables.fileExt=ListLast("test1.csv",".")>
 
 <h1>Hello World</h1>
 
-<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens"
-returnvariable="myList" > 
-		<cfset myFile = fileRead("c:\temp\test1.txt")>
-
-    <cfdump  var="#myFile#">
-
-<p>
-	<cfoutput>
-		#myList#
-	</cfoutput>
-	
-</p>
-
-<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens"
-returnvariable="myList" > 
-	
+<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens" returnvariable="myList"> 
+ <cfinvokeargument name="fileData" value="#variables.fileData#">
+ <cfinvokeargument name="fileExt" value="#variables.fileExt#">
+</cfinvoke>
 <p>
 	<cfoutput>
 		#myList#
 	</cfoutput>
 </p>
 
-
-<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens"
-returnvariable="myList" > 
-	
+<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens" returnvariable="myList"> 
+ <cfinvokeargument name="fileData" value="#variables.fileData#">
+ <cfinvokeargument name="fileExt" value="#variables.fileExt#">
+</cfinvoke>
 <p>
 	<cfoutput>
 		#myList#
 	</cfoutput>
 </p>
-<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens"
-returnvariable="myList" > 
-	
+<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens" returnvariable="myList"> 
+ <cfinvokeargument name="fileData" value="#variables.fileData#">
+ <cfinvokeargument name="fileExt" value="#variables.fileExt#">
+</cfinvoke>
+<p>
+	<cfoutput>
+		#myList#
+	</cfoutput>
+</p>
+<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens" returnvariable="myList"> 
+ <cfinvokeargument name="fileData" value="#variables.fileData#">
+ <cfinvokeargument name="fileExt" value="#variables.fileExt#">
+</cfinvoke>
+<p>
+	<cfoutput>
+		#myList#
+	</cfoutput>
+</p>
+<cfinvoke component="#variables.parseFileObj#" method="getNextLineTokens" returnvariable="myList"> 
+ <cfinvokeargument name="fileData" value="#variables.fileData#">
+ <cfinvokeargument name="fileExt" value="#variables.fileExt#">
+</cfinvoke>
 <p>
 	<cfoutput>
 		#myList#
