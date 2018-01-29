@@ -24,7 +24,7 @@ component displayname="parseFile" hint="Singleton instance class that is able to
     abort;
   }
 
-  if(len(customDelimiter) EQ 0){ 
+  if(NOT len(customDelimiter)){ 
     switch(Lcase(fileExt)) {
       case "tab":
           var delimiter = #chr(9)#;
@@ -35,20 +35,21 @@ component displayname="parseFile" hint="Singleton instance class that is able to
       default: 
           var delimiter = " ";
     }
-  } else delimiter = customDelimiter;
+  } else delimiter = chr(Asc(customDelimiter));
 
   if(fileExt EQ "exe" || fileExt EQ "com"){
       throw(message="Invaid file type");
       abort;
   }
-    
+
+
   try {
   	var totalRows = listlen(fileData,EOL);
     if(this.lineCount GT totalRows){
       return "null";
     } else {
       var line = ListGetAt(fileData, this.lineCount, chr(10));
-      var listArray = ListToArray(line, delimiter); 
+      var listArray = ListToArray(line, delimiter ); 
       this.lineCount = this.lineCount + 1;
       return ArrayToList(listArray, ",");
     } 
