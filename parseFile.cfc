@@ -1,4 +1,4 @@
-component displayname="parseFile" hint="Singleton instance class that is able to read the next line from a text file and return a List of Strings that represent each delimited token that it reads from the file" output="true"
+component displayname="parseFile" hint="Singleton instance class that is able to read the next line from a text file and return a List of Strings that represent each delimited token that it reads from the file" output="false" returnType = "any"
 {
 
 /**
@@ -9,7 +9,7 @@ component displayname="parseFile" hint="Singleton instance class that is able to
 */
 	this.lineCount = 1;
   
-  public any function getNextLineTokens(required string fileData, string fileExt = '', string customDelimiter='') 
+  public any function getNextLineTokens(required string fileData, string fileExt = '', string customDelimiter = '') 
 	 displayname="getNextLineTokens" description="The first call to a getNextLineTokens method of this new class would return a List of Strings that delimited token values. The second call would return the next row in the same file data. No lines left should return null." returnFormat="plain"
 	{
   var EOL = #chr(10)#; 
@@ -41,7 +41,6 @@ component displayname="parseFile" hint="Singleton instance class that is able to
       throw(message="Invaid file type");
       abort;
   }
-
 
   try {
   	var totalRows = listlen(fileData,EOL);
