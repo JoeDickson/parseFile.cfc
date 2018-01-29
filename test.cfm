@@ -6,9 +6,7 @@
     <cfset variables.parseFileObjtest1 = createObject("component", "parseFile") />
   </cfif>
   <cfset myPath = GetDirectoryFromPath(GetCurrentTemplatePath())>
-  
   <cfset variables.fileData = fileRead("#GetDirectoryFromPath(GetCurrentTemplatePath())#test1.csv")>
-  <cfdump var=#variables#></cfdump>
   <cfset variables.fileExt=ListLast("test1.csv",".")>
   <cfinvoke component="#variables.parseFileObjtest1#" method="getNextLineTokens" returnvariable="myList"> 
   <cfinvokeargument name="fileData" value="#variables.fileData#">
@@ -127,8 +125,8 @@ TAB Tests failed.
 <p>
   <cfoutput>
     #myList#
-     <cfif Not Compare(myList, "Hello,world,how,are,you,1")>
-      Incorrect parsing
+     <cfif myList NEQ "Hello,world,how,are,you,1">
+       <br />--Incorrect parsing
     </cfif>
   </cfoutput>
 </p>
@@ -136,14 +134,14 @@ TAB Tests failed.
 <cfset variables.valid = true>
 <cfinvoke component="#variables.parseFileObjtest3#" method="getNextLineTokens" returnvariable="myList"> 
 <cfinvokeargument name="fileData" value="#variables.fileData#">
-<cfinvokeargument name="customDelimiter" value="~">
+<cfinvokeargument name="customDelimiter" value="$">
 </cfinvoke>
 <p>
   <cfoutput>
     #myList#;
   </cfoutput>
-     <cfif Not Compare(myList, "Hello,world,how,are,you,2")>
-      Incorrect parsing
+     <cfif myList NEQ "Hello,world,how,are,you,2">
+      <br />--Incorrect parsing
       <cfset variables.valid = false>
     </cfif>
 </p>
