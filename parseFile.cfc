@@ -17,7 +17,7 @@ component displayname="parseFile" hint="Singleton instance class that is able to
   var COMMA = #chr(44)#; 
   
   if( fileExt EQ "" && customDelimiter EQ "" ){
-    throw("Method requires file extension or Custom Delimter be passed in.");
+    throw("Method requires file extension or Custom Delimiter be passed in.");
     abort;
   }
 
